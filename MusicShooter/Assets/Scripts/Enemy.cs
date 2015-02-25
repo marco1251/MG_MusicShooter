@@ -4,47 +4,44 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
 
-    public float moveSpeed;
-    public float hp;
+    public float moveSpeed; //enemy movement speed
+    public float hp; //enemy health
 
-    private CharacterController controller;
-    private Vector3 moveDirection = Vector3.zero;
 
-    Transform playerTransform;
+    Transform playerTransform; //location of the player
 
     //enum of enemy status
     enum AIStatus
     {
-        Seek = 0,
-        Dead = 1
+        Seek = 0, //follow the player
+        Dead = 1 //dead
     }
 
-    //instance of AIStatus
-    private AIStatus status = AIStatus.Seek;
+    private AIStatus status = AIStatus.Seek; //instance of AIStatus
 
     // Use this for initialization
     void Awake()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // defining player transform
         hp = 100; //default health
     }
 
-    void CheckStatus()
+    void CheckStatus() //determine enemy status
     {
         if (hp >= 1)
         {
-            status = AIStatus.Seek;
+            status = AIStatus.Seek; //follow player if enemy is alive
         }
-        else if (hp <= 0)
+        else if (hp <= 0) 
         {
-            status = AIStatus.Dead;
+            status = AIStatus.Dead; //die if health reaches 0
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckStatus();
+        CheckStatus(); //determine status
 
         switch (status)
         {
@@ -59,17 +56,20 @@ public class Enemy : MonoBehaviour
 
     void Seek()
     {
+        //look at and follow the player
         transform.LookAt(playerTransform.transform);
         transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
     }
 
     void Dead()
     {
+        //destroy the enemy 
         Destroy(this.gameObject);
     }
 
     void OnTriggerEnter(Collider other)
     {
+        //lower enemy health by 10 when hit by a player bullet
         if (other.gameObject.tag == ("PlayerBullet"))
         {
             hp -= 10;
