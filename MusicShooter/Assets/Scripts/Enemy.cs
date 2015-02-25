@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float hp; //enemy health
 
 
+
     Transform playerTransform; //location of the player
 
     //enum of enemy status
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // defining player transform
-        hp = 100; //default health
+        hp = 500; //default health
     }
 
     void CheckStatus() //determine enemy status
@@ -72,8 +73,9 @@ public class Enemy : MonoBehaviour
         //lower enemy health by 10 when hit by a player bullet
         if (other.gameObject.tag == ("PlayerBullet"))
         {
-            hp -= 10;
-            print("enemy hit");
+            hp -= 10; //lower enemy health
+            Destroy(other.gameObject); //destroy bullet
         }
+        
     }
 }

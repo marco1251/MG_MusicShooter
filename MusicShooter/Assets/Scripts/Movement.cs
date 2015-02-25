@@ -4,7 +4,7 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
 
-    float speed = 8.0f; //player movement speed
+    float speed = 13.0f; //player movement speed
 
 
     // Update is called once per frame

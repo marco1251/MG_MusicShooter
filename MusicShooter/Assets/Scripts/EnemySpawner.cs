@@ -12,13 +12,13 @@ public class EnemySpawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        InvokeRepeating("Spawn", initialSpawn, spawnDelay); //spawn enemy
+        InvokeRepeating("Spawn", 3, 1.5f); //spawn enemy
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void Spawn()
