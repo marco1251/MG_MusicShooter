@@ -76,6 +76,11 @@ public class Enemy : MonoBehaviour
             hp -= 10; //lower enemy health
             Destroy(other.gameObject); //destroy bullet
         }
+
+        if (other.gameObject.tag == ("Enemy"))
+        {
+            Destroy(this.gameObject); //destroy both enemies if they collide with each other
+        }
         
     }
 }
