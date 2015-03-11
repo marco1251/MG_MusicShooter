@@ -15,6 +15,7 @@ public class PlayerDeath : MonoBehaviour
     {
         //defining lives and text
         lives = 3;
+        //Guitext.
         Guitext.text = "Lives: " + lives.ToString();
         GuiLose.text = "You Lose!"; 
         Guitext.enabled = true;
