@@ -15,12 +15,6 @@ public class EnemySpawner : MonoBehaviour
         InvokeRepeating("Spawn", 3, 1.5f); //spawn enemy
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void Spawn()
     {
         int SpawnSelect = Random.Range(0, spawnPoints.Length); //int to determine which spawn is used 
