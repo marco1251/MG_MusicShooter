@@ -71,8 +71,8 @@ public class NewEnemySpawner : MonoBehaviour
     void Spawn()
     {
         //previous code that spawned enemies at a random spawnpoint (currently not working)
-        int SpawnSelect = Random.Range(0, spawnPoints.Length); //int to determine which spawn is used 
+        //int SpawnSelect = Random.Range(0, spawnPoints.Length); //int to determine which spawn is used 
 
-        Instantiate(enemy, spawnPoints[SpawnSelect].position, spawnPoints[SpawnSelect].rotation); //spawn enemy at the selected spawn
+        //Instantiate(enemy, spawnPoints[SpawnSelect].position, spawnPoints[SpawnSelect].rotation); //spawn enemy at the selected spawn
     }
 }

@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
 
     Transform playerTransform; //location of the player
 
+    //AudioSource audioSource;
+    //public AudioClip audioClip;
+
     //enum of enemy status
     enum AIStatus //enemy state machine
     {
@@ -26,6 +29,10 @@ public class Enemy : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // defining player transform
         hp = 200; //default health
+
+        //audioSource = this.gameObject.AddComponent<AudioSource>();
+        //audioSource.clip = audioClip;
+        //audioSource.PlayOneShot(audioClip);
     }
 
     void CheckStatus() //determine enemy status
@@ -99,6 +106,7 @@ public class Enemy : MonoBehaviour
     void Dead()
     {
         //destroy the enemy 
+        //audioSource.PlayOneShot(audioClip);
         Destroy(this.gameObject);
     }
 
