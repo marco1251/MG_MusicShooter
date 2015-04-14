@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerDeath : MonoBehaviour
+public class PlayerDeath : Health
 {
 
-    public int lives; //player lives
+    //public int lives; //player lives
     public GUIText Guitext; //guitext keeping track of player lives
     public GUIText GuiLose; //failure text
     Vector3 respawn; //respawn player at center of the screen
@@ -13,17 +13,24 @@ public class PlayerDeath : MonoBehaviour
     public delegate void PlayerDeathHandler();
     public static event PlayerDeathHandler PlayerHit;
 
+    AudioSource deathAudioSource; //reference to audio source
+    public AudioClip deathAudio; //reference to audio clip
+
 
     // Use this for initialization
     void Start()
     {
         //defining lives and text
-        lives = 3;
+        //lives = 3;
         Guitext.text = "Lives: " + lives.ToString();
-        GuiLose.text = "You Lose!"; 
+        GuiLose.text = "You Lose!";
         Guitext.enabled = true;
         GuiLose.enabled = false;
         respawn = new Vector3(0, 0, 0); //center of the screen
+
+        deathAudioSource = this.gameObject.AddComponent<AudioSource>();
+        deathAudioSource.clip = deathAudio;
+
     }
 
 
@@ -54,7 +61,11 @@ public class PlayerDeath : MonoBehaviour
             Guitext.text = "Lives: 0";
             GuiLose.enabled = true;
             Invoke("Reset", 2); //reset
+
         }
+
+        deathAudioSource.PlayOneShot(deathAudio);
+
     }
 
 

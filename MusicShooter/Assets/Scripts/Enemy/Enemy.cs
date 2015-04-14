@@ -11,8 +11,8 @@ public class Enemy : MonoBehaviour
 
     Transform playerTransform; //location of the player
 
-    //AudioSource audioSource;
-    //public AudioClip audioClip;
+    AudioSource audioSource; //reference to audio source
+    public AudioClip audioClip; //reference to audio clip
 
     //enum of enemy status
     enum AIStatus //enemy state machine
@@ -30,9 +30,8 @@ public class Enemy : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // defining player transform
         hp = 200; //default health
 
-        //audioSource = this.gameObject.AddComponent<AudioSource>();
-        //audioSource.clip = audioClip;
-        //audioSource.PlayOneShot(audioClip);
+        audioSource = this.gameObject.AddComponent<AudioSource>(); //adding audiosource component to object
+        audioSource.clip = audioClip; //defining audioclip
     }
 
     void CheckStatus() //determine enemy status
@@ -123,12 +122,14 @@ public class Enemy : MonoBehaviour
         //lower enemy health by 10 when hit by a player bullet
         if (other.gameObject.tag == ("PlayerBullet"))
         {
+            audioSource.PlayOneShot(audioClip); //play enemy death audio when hit by a player bullet
             hp -= 10; //lower enemy health
             Destroy(other.gameObject); //destroy bullet
         }
 
         if (other.gameObject.tag == ("Enemy"))
         {
+            audioSource.PlayOneShot(audioClip); //play enemy death audio (Does not work because enemy object is destroyed NEED TO FIX)
             Destroy(this.gameObject); //destroy both enemies if they collide with each other
         }
 
