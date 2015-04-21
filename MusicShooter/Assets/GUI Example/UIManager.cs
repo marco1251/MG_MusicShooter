@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
         //buttons
         if(GUILayout.Button("Play Game"))
         {
-            Application.LoadLevel("EXLevel");
+            Application.LoadLevel("2DScene");
         }
         if (GUILayout.Button("Options"))
         {

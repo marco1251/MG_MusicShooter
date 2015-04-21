@@ -33,7 +33,7 @@ public class LevelMusic : Health
         //play lose audio when player runs out of lives 
         else if (lives <= 0)
         {
-            levelAudioSource.mute = true;
+            levelAudioSource.Stop();
             loseAudioSource.PlayOneShot(loseAudioClip);
         }
     }
