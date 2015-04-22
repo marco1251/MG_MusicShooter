@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerShoot : MonoBehaviour
 {
 
-    public Rigidbody bulletPrefab; //prefab of bullet
+    public Rigidbody2D bulletPrefab; //prefab of bullet
     public Transform bulletTransform; //transform for bullet prefab 
 
     AudioSource BulletAudioSource; //audio source
@@ -31,29 +31,29 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow)) //get up arrow key
         {
-            Rigidbody bulletInstance; //creating rigidbody
-            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody; //instantiate the rigidbody
+            Rigidbody2D bulletInstance; //creating rigidbody
+            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody2D; //instantiate the rigidbody
             bulletInstance.AddForce(bulletTransform.up * 1000); //add force in up direction       
         }
 
         else if (Input.GetKey(KeyCode.DownArrow)) //shoot down
         {
-            Rigidbody bulletInstance;
-            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody;
+            Rigidbody2D bulletInstance;
+            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody2D;
             bulletInstance.AddForce(bulletTransform.up * 1000);
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow)) // shoot left
         {
-            Rigidbody bulletInstance;
-            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody;
+            Rigidbody2D bulletInstance;
+            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody2D;
             bulletInstance.AddForce(bulletTransform.up * 1000);
         }
 
         else if (Input.GetKey(KeyCode.RightArrow)) //shoot right
         {
-            Rigidbody bulletInstance;
-            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody;
+            Rigidbody2D bulletInstance;
+            bulletInstance = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation) as Rigidbody2D;
             bulletInstance.AddForce(bulletTransform.up * 1000);
         }
     }

@@ -92,14 +92,23 @@ public class Enemy : MonoBehaviour
     void Seek()
     {
         //look at and follow the player
-        transform.LookAt(playerTransform.transform);
+        //transform.LookAt(playerTransform.transform);
+
+        //Vector2 moveDirection = gameObject.rigidbody2D.velocity;
+        //float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
     }
 
     void Stop()
     {
         //stop movement and look at player
-        transform.LookAt(playerTransform.transform);
+        //transform.LookAt(playerTransform.transform);
+
+        //Vector2 moveDirection = gameObject.rigidbody2D.velocity;
+        //float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     void Dead()
@@ -117,7 +126,7 @@ public class Enemy : MonoBehaviour
         status = AIStatus.Seek; //enemy is seeking player after the set time
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         //lower enemy health by 10 when hit by a player bullet
         if (other.gameObject.tag == ("PlayerBullet"))
@@ -135,7 +144,7 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.tag == ("Player"))
         {
-            Destroy(this.gameObject); //destroy the enemy that touches the player
+            //Destroy(this.gameObject); //destroy the enemy that touches the player
         }
 
     }
