@@ -34,7 +34,7 @@ public class PlayerDeath : Health
     }
 
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         //subtrack a life from lives when player touches an enemy
         if (other.gameObject.tag == ("Enemy"))

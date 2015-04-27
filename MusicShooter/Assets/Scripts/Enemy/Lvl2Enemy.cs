@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class Lvl2Enemy : MonoBehaviour
 {
 
     public float moveSpeed; //enemy movement speed
@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     public bool isPlayerHit = false; //determines when enemy comes in contact with player
 
-    Transform playerTransform; //location of the player
+    Transform StationTransform; //location of the player
 
     AudioSource audioSource; //reference to audio source
     public AudioClip audioClip; //reference to audio clip
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // defining player transform
+        StationTransform = GameObject.FindGameObjectWithTag("Station").transform; // defining station transform
         hp = 200; //default health
 
         audioSource = this.gameObject.AddComponent<AudioSource>(); //adding audiosource component to object
@@ -93,14 +93,14 @@ public class Enemy : MonoBehaviour
     {
         //look at and follow the player
         //transform.LookAt(playerTransform.transform);
-        transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, StationTransform.position, moveSpeed * Time.deltaTime);
     }
 
     void Stop()
     {
         //stop movement and look at player
-        //transform.LookAt(playerTransform.transform);
-        transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, 0 * Time.deltaTime);
+        //transform.LookAt(StationTransform.transform);
+        transform.position = Vector3.MoveTowards(transform.position, StationTransform.position, 0 * Time.deltaTime);
     }
 
     void Dead()
