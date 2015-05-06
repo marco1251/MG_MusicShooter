@@ -13,7 +13,7 @@ public class NewEnemySpawner : MonoBehaviour
     void Start()
     {
         SetSpawnLocations(); //set initial spawn locations
-        InvokeRepeating("Spawn", 3, 1.5f); //spawn enemy
+        InvokeRepeating("Spawn", 3, 1f); //spawn enemy
     }
 
     // Update is called once per frame

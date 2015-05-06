@@ -137,7 +137,7 @@ public class Lvl2Enemy : MonoBehaviour
         if (other.gameObject.tag == ("Player"))
         {
             print("player touched");
-            Destroy(this.gameObject); //destroy the enemy that touches the player
+            //Destroy(this.gameObject); //destroy the enemy that touches the player
         }
 
     }

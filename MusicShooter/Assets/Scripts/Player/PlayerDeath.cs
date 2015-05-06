@@ -45,6 +45,7 @@ public class PlayerDeath : Health
             {
                 PlayerHit(); //triggers event
                 Hit(); //reduce lives
+                Destroy(other.gameObject);
             }
         }
 

@@ -130,6 +130,7 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.tag == ("Enemy"))
         {
+            print("enemies touching");
             audioSource.PlayOneShot(audioClip); //play enemy death audio (Does not work because enemy object is destroyed NEED TO FIX)
             Destroy(this.gameObject); //destroy both enemies if they collide with each other
         }
@@ -137,7 +138,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == ("Player"))
         {
             print("player touched");
-            Destroy(this.gameObject); //destroy the enemy that touches the player
+            //Destroy(this.gameObject); //destroy the enemy that touches the player
         }
 
     }
