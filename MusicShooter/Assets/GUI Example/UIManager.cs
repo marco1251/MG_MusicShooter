@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     private string main = "main"; //main menu state
     private string options = "options";
     private string credits = "credits";
+    private string level = "Level Select";
 
     private string textToDisplay = "Credits \n";
     private float volume = 1f;
@@ -44,12 +45,18 @@ public class UIManager : MonoBehaviour
             GUI.DrawTexture(new Rect((Screen.width / 2) - 100, 30, 200, 200), Logo);
         }
 
+        GUILayout.Box("Music Shooter");
+
         GUI.skin = myGUISkin;
 
         //check UI state
         if (menuState == main)
         {
             WindowRect = GUI.Window(0, WindowRect, menuFunc, "Main Menu");
+        }
+        if(menuState == level)
+        {
+            WindowRect = GUI.Window(0, WindowRect, levelFunc, "Level Select");
         }
         if (menuState == options)
         {
@@ -67,6 +74,10 @@ public class UIManager : MonoBehaviour
         if(GUILayout.Button("Play Game"))
         {
             Application.LoadLevel("2DSceneLvl1");
+        }
+        if(GUILayout.Button("Level Select"))
+        {
+            menuState = level;
         }
         if (GUILayout.Button("Options"))
         {
@@ -88,6 +99,26 @@ public class UIManager : MonoBehaviour
         volume = GUILayout.HorizontalSlider(volume, 0.0f, 1.0f);
         AudioListener.volume = volume;
         if(GUILayout.Button("Back"))
+        {
+            menuState = main;
+        }
+    }
+
+    private void levelFunc(int id)
+    {
+        if(GUILayout.Button("Level 1"))
+        {
+            Application.LoadLevel("2DSceneLvl1");
+        }
+        if (GUILayout.Button("Level 2"))
+        {
+            Application.LoadLevel("2DSceneLvl2");
+        }
+        if (GUILayout.Button("Level 3"))
+        {
+            Application.LoadLevel("2DSceneLvl3");
+        }
+        if (GUILayout.Button("Back"))
         {
             menuState = main;
         }

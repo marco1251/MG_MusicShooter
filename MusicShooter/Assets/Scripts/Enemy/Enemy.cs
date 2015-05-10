@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public float moveSpeed; //enemy movement speed
     public float hp; //enemy health
 
+    private EnemyCount enemyCount; //reference to destroyed enemies
+
     public bool isPlayerHit = false; //determines when enemy comes in contact with player
 
     Transform playerTransform; //location of the player
@@ -27,8 +29,10 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // defining player transform
         hp = 200; //default health
+        enemyCount = GameObject.Find("enemyCount").GetComponent<EnemyCount>(); //reference to game object
 
         audioSource = this.gameObject.AddComponent<AudioSource>(); //adding audiosource component to object
         audioSource.clip = audioClip; //defining audioclip
@@ -125,6 +129,11 @@ public class Enemy : MonoBehaviour
         {
             audioSource.PlayOneShot(audioClip); //play enemy death audio when hit by a player bullet
             hp -= 10; //lower enemy health
+            if(hp == 0)
+            {
+                enemyCount.enemyCount++; //add to enemy count when enemy dies
+                print("enemies destroyed: " + enemyCount.enemyCount);
+            }
             Destroy(other.gameObject); //destroy bullet
         }
 

@@ -11,6 +11,8 @@ public class Station : MonoBehaviour
     AudioSource deathAudioSource; //reference to audio source
     public AudioClip deathAudio; //reference to audio clip
 
+
+
     // Use this for initialization
     void Start()
     {
@@ -22,6 +24,8 @@ public class Station : MonoBehaviour
 
         deathAudioSource = this.gameObject.AddComponent<AudioSource>();
         deathAudioSource.clip = deathAudio;
+
+
     }
 
     void Update()
